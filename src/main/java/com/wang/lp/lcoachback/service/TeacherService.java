@@ -17,12 +17,12 @@ public interface TeacherService {
      * @param password
      * @return
      */
-    String login(String username, String password);
+    boolean login(String username, String password);
 
     /**
      * 完善学生信息
      * @param student
      * @return
      */
-    Student updateTeacher(Student student);
+    boolean updateTeacher(Student student);
 }

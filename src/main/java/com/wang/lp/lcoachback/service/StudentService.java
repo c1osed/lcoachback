@@ -19,14 +19,14 @@ public interface StudentService {
      * @param password
      * @return
      */
-    String login(String username, String password);
+    boolean login(String username, String password);
 
     /**
      * 完善学生信息
      * @param student
      * @return
      */
-    Student updateStudent(Student student);
+    boolean updateStudent(Student student);
 
 
 
