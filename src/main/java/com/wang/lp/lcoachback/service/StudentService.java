@@ -3,7 +3,6 @@ package com.wang.lp.lcoachback.service;
 import com.wang.lp.lcoachback.mbg.model.Student;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface StudentService {
     /**
      * 学生注册

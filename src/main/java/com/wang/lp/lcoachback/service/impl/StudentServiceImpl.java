@@ -5,9 +5,10 @@ import com.wang.lp.lcoachback.mbg.model.Student;
 import com.wang.lp.lcoachback.mbg.model.StudentExample;
 import com.wang.lp.lcoachback.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class StudentServiceImpl implements StudentService {
     @Autowired
     StudentMapper studentMapper;
