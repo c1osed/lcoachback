@@ -32,14 +32,14 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public boolean login(String username, String password) {
+    public Student login(String username, String password) {
         StudentExample studentExample = new StudentExample();
         studentExample.createCriteria().andNameEqualTo(username).andPasswordEqualTo(password);
         List<Student> students = studentMapper.selectByExample(studentExample);
         if(students!=null&&students.size()>0){
-            return true;
+            return students.get(0);
         }
-        return false;
+        return null;
     }
 
     @Override

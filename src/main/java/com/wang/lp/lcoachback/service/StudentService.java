@@ -18,7 +18,7 @@ public interface StudentService {
      * @param password
      * @return
      */
-    boolean login(String username, String password);
+    Student login(String username, String password);
 
     /**
      * 完善学生信息
