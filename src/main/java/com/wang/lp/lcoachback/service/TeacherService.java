@@ -1,6 +1,9 @@
 package com.wang.lp.lcoachback.service;
 
 import com.wang.lp.lcoachback.mbg.model.Student;
+import com.wang.lp.lcoachback.mbg.model.Teacher;
+
+import java.util.List;
 
 public interface TeacherService {
     /**
@@ -12,7 +15,7 @@ public interface TeacherService {
     boolean register(String username, String password);
 
     /**
-     * 学生登陆
+     * 老师登陆
      * @param username
      * @param password
      * @return
@@ -20,9 +23,27 @@ public interface TeacherService {
     boolean login(String username, String password);
 
     /**
-     * 完善学生信息
-     * @param student
+     * 完善老师信息
+     * @param teacher
      * @return
      */
-    boolean updateTeacher(Student student);
+    void updateTeacher(Teacher teacher);
+
+    /**
+     * 得到全部的老师
+     * @return
+     */
+    List<Teacher> getAllTeachers();
+
+    /**
+     * 通过id得到老师的信息
+     * @param id
+     * @return
+     */
+    Teacher getteachersById(Integer id);
+    /**
+     * @param id
+     *通过id删除老师
+     * */
+    void deleteTeacherById(Integer id);
 }

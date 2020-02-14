@@ -41,13 +41,27 @@ public class StudentServiceImpl implements StudentService {
         }
         return null;
     }
+    @Override
+    public List<Student> getStudentsList() {
+
+        return studentMapper.selectByExample(null);
+    }
 
     @Override
-    public boolean updateStudent(Student student) {
-        int i = studentMapper.updateByPrimaryKey(student);
-        if(i>0){
-            return true;
-        }
-        return false;
+    public Student getStudentById(Integer id) {
+        Student student = studentMapper.selectByPrimaryKey(id);
+        return student;
+    }
+
+    @Override
+    public void updateStudent(Student student) {
+        studentMapper.updateByPrimaryKeySelective(student);
+
+    }
+
+    @Override
+    public void deleteStudentById(Integer id) {
+        studentMapper.deleteByPrimaryKey(id);
+
     }
 }
