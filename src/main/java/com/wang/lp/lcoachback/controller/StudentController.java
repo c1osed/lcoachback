@@ -43,7 +43,7 @@ public class StudentController {
             return CommonResult.failed("登录失败");
         } else {
             session.setAttribute("student", login);
-            return CommonResult.success("登陆成功");
+            return CommonResult.success(login,"登陆成功");
         }
     }
 

@@ -20,7 +20,7 @@ public interface TeacherService {
      * @param password
      * @return
      */
-    boolean login(String username, String password);
+    Teacher login(String username, String password);
 
     /**
      * 完善老师信息
@@ -46,4 +46,11 @@ public interface TeacherService {
      *通过id删除老师
      * */
     void deleteTeacherById(Integer id);
+
+    /**
+     *  根据学生id查询出所有的老师
+     * @param id
+     * @return
+     */
+    List<Teacher> getAllTeacherByStudentId(Integer id);
 }

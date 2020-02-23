@@ -3,6 +3,8 @@ package com.wang.lp.lcoachback.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.wang.lp.lcoachback.common.api.CommonResult;
+import com.wang.lp.lcoachback.dto.StudentDto;
+import com.wang.lp.lcoachback.dto.TeacherDto;
 import com.wang.lp.lcoachback.mbg.mapper.TeacherMapper;
 import com.wang.lp.lcoachback.mbg.model.Student;
 import com.wang.lp.lcoachback.mbg.model.Teacher;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 @Controller
 public class TeacherController {
@@ -58,4 +61,33 @@ public class TeacherController {
         return CommonResult.success("删除信息成功");
 
     }
+    @ResponseBody
+    @CrossOrigin
+    @ApiOperation(value = "老师登陆")
+    @RequestMapping(value = "/api/teacherlogin", method = RequestMethod.POST)
+    public CommonResult loginStudent(@RequestBody TeacherDto teacherDto, HttpSession session) {
+        Teacher login = teacherService.login(teacherDto.getUsername(), teacherDto.getPassword());
+        if (login == null) {
+            return CommonResult.failed("登录失败");
+        } else {
+//            session.setAttribute("student", login);
+            return CommonResult.success(login,"登陆成功");
+        }
+    }
+
+
+
+    @ResponseBody
+    @CrossOrigin
+    @ApiOperation(value = "根据学生id查询所有的老师")
+    @RequestMapping(value = "/api/teacher/{id}", method = RequestMethod.GET)
+    public CommonResult getTeacherByStudentId(@PathVariable("id")Integer id) {
+        List<Teacher> allTeacherByStudentId = teacherService.getAllTeacherByStudentId(id);
+
+            return CommonResult.success(allTeacherByStudentId);
+
+    }
+
+
+
 }

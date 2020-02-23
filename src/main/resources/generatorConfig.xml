@@ -45,14 +45,14 @@
                              targetProject=".\src\main\java"/>
         <!--生成全部表tableName设为%-->
         <!--        学生表-->
-        <table tableName="student">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="student">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 <!--        第四天的更新-->
 <!--        老师表-->
-        <table tableName="teacher">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="teacher">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
         <!--            课程表-->
         <table tableName="course">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>

@@ -3,6 +3,7 @@ package com.wang.lp.lcoachback.service.impl;
 import com.wang.lp.lcoachback.mbg.mapper.TeacherMapper;
 import com.wang.lp.lcoachback.mbg.model.Student;
 import com.wang.lp.lcoachback.mbg.model.Teacher;
+import com.wang.lp.lcoachback.mbg.model.TeacherExample;
 import com.wang.lp.lcoachback.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,15 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public boolean login(String username, String password) {
-        return false;
+    public Teacher login(String username, String password) {
+
+        TeacherExample teacherExample = new TeacherExample();
+        teacherExample.createCriteria().andNameEqualTo(username).andPasswordEqualTo(password);
+        List<Teacher> teachers = teacherMapper.selectByExample(teacherExample);
+        if(teachers.size()>0&&teachers!=null){
+            return teachers.get(0);
+        }
+        return  null;
     }
 
     @Override
@@ -47,5 +55,15 @@ public class TeacherServiceImpl implements TeacherService {
     public void deleteTeacherById(Integer id) {
         teacherMapper.deleteByPrimaryKey(id);
 
+    }
+
+    @Override
+    public List<Teacher> getAllTeacherByStudentId(Integer id) {
+        List<Teacher> teachersByStudentId = teacherMapper.getTeachersByStudentId(id);
+        if(teachersByStudentId!=null&&teachersByStudentId.size()>0){
+            return teachersByStudentId;
+        }
+
+        return null;
     }
 }
