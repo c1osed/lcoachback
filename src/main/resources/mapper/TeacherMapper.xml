@@ -21,8 +21,8 @@
 <!--        <result column="appointment_time" jdbcType="VARCHAR" property="appointmentTime" />-->
 <!--    </resultMap>-->
     <select  id="getTeachersByStudentId" resultType="com.wang.lp.lcoachback.mbg.model.Teacher">
-        SELECT t.* FROM student s
+        SELECT DISTINCT t.id,t.* FROM student s
         JOIN course c ON s.id =c.sid and s.id=#{id}
-        JOIN teacher t ON t.id = c.tid
+JOIN teacher t ON t.id = c.tid
     </select>
 </mapper>
