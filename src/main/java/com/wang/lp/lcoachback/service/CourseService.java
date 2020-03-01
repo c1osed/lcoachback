@@ -18,6 +18,12 @@ public interface CourseService {
       * @return
       */
      List<Course> getcoursebyteacherid(Integer id);
+     /**
+      * 根据老师id得到被选择的课程信息
+      * @param id
+      * @return
+      */
+     List<Course> getchoosecoursebyteacherid(Integer id);
 
      /**
       * 根据id更新course
@@ -33,5 +39,13 @@ public interface CourseService {
       */
 
      Course getCourseById(Integer id);
+
+     /**
+      * 根据学生的id查询所选的课程
+      * @param id
+      * @return
+      */
+
+     List<Course> getCourseByStudentId(Integer id);
 
 }

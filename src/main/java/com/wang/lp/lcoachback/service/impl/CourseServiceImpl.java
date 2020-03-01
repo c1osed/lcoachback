@@ -32,6 +32,17 @@ public class CourseServiceImpl implements CourseService {
  }
 
  @Override
+ public List<Course> getchoosecoursebyteacherid(Integer id) {
+  CourseExample courseExample = new CourseExample();
+  courseExample.createCriteria().andTidEqualTo(id).andIsChooseEqualTo("1");
+  List<Course> courses = courseMapper.selectByExample(courseExample);
+  if(courses!=null&&courses.size()>0){
+   return  courses;
+  }
+  return null;
+ }
+
+ @Override
  public void updatacourse(Course course) {
    courseMapper.updateByPrimaryKeySelective(course);
 
@@ -42,6 +53,17 @@ public class CourseServiceImpl implements CourseService {
   Course course = courseMapper.selectByPrimaryKey(id);
   if(course!=null){
    return course;
+  }
+  return null;
+ }
+
+ @Override
+ public List<Course> getCourseByStudentId(Integer id) {
+     CourseExample courseExample = new CourseExample();
+     courseExample.createCriteria().andSidEqualTo(id).andIsChooseEqualTo("1");
+     List<Course> courses = courseMapper.selectByExample(courseExample);
+     if(courses!=null&&courses.size()>0){
+     return courses;
   }
   return null;
  }

@@ -46,6 +46,21 @@ public interface StudentService {
      * */
     void deleteStudentById(Integer id);
 
+    /**
+     * 根据老师id查询所有的学生
+     * @param teacherid
+     * @return
+     */
+    List<Student> getStudentByteacherId(Integer teacherid);
+
+    /**
+     * 根据老师id和课程类型查询不同类型所有的学生
+     * @param teacherid
+     * @return
+     */
+    List<Student> getStudentByteacherIdandCourseTypeId(Integer teacherid,String course_type);
+
+
 
 
 

@@ -27,4 +27,8 @@ public interface StudentMapper {
     int updateByPrimaryKeySelective(Student record);
 
     int updateByPrimaryKey(Student record);
+
+    List<Student> getStudentByteacherId(Integer teacherid);
+
+    List<Student> getStudentByteacherIdandCourseTypeId(@Param("teacherid") Integer integerid,@Param("coursetype")String coursetype);
 }

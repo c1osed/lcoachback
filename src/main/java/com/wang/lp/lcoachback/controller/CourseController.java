@@ -29,6 +29,7 @@ public class CourseController {
         course.setTid(courseDto.getId());
         course.setColor(courseDto.getColor());
         course.setStarttime(courseDto.getStarttime());
+           course.setCourseTitle(courseDto.getCoursetitle());
         course.setGradle(courseDto.getGradle());
         course.setEndtime(courseDto.getEndtime());
         courseService.addcourse(course);
@@ -58,6 +59,29 @@ public class CourseController {
 
        }
 
+    @ResponseBody
+    @CrossOrigin
+    @ApiOperation(value = "通过老师的id查询被选择的课程")
+    @RequestMapping(value = "/api/coursebyteacherid/{id}", method = RequestMethod.GET)
+    public CommonResult SelectChooseCourseByTeacherId(@PathVariable("id") Integer id) {
+        List<Course> getcoursebyteacherid = courseService.getcoursebyteacherid(id);
+        List fullCalendarDtolist = new ArrayList();
+        for( Course  course : getcoursebyteacherid){
+            FullCalendarDto fullCalendarDto = new FullCalendarDto();
+            fullCalendarDto.setId(course.getId());
+            fullCalendarDto.setSid(course.getSid());
+            fullCalendarDto.setTid(course.getTid());
+            fullCalendarDto.setTitle(course.getCourseTitle());
+            fullCalendarDto.setStart(course.getStarttime());
+            fullCalendarDto.setEnd(course.getEndtime());
+            fullCalendarDto.setColor(course.getColor());
+            fullCalendarDtolist.add(fullCalendarDto);
+
+        }
+        return CommonResult.success(fullCalendarDtolist);
+
+    }
+
     @CrossOrigin
     @ResponseBody
     @ApiOperation(value = "根据id修改课程的信息")
@@ -69,6 +93,30 @@ public class CourseController {
         courseById.setIsChoose("1");
         courseService.updatacourse(courseById);
         return CommonResult.success("修改课程信息成功");
+
+    }
+
+    @CrossOrigin
+    @ResponseBody
+    @ApiOperation(value = "根据id查询学生的所有课程")
+    @RequestMapping(value = "/api/courses/{sid}", method = RequestMethod.GET)
+    public CommonResult selectCourseByStudentId(@PathVariable("sid") Integer id) {
+        List<Course> courseByStudentId = courseService.getCourseByStudentId(id);
+
+        List fullCalendarDtolist = new ArrayList();
+        for( Course  course : courseByStudentId){
+            FullCalendarDto fullCalendarDto = new FullCalendarDto();
+            fullCalendarDto.setId(course.getId());
+            fullCalendarDto.setSid(course.getSid());
+            fullCalendarDto.setTid(course.getTid());
+            fullCalendarDto.setTitle(course.getCourseTitle());
+            fullCalendarDto.setStart(course.getStarttime());
+            fullCalendarDto.setEnd(course.getEndtime());
+            fullCalendarDto.setColor(course.getColor());
+            fullCalendarDtolist.add(fullCalendarDto);
+        }
+
+        return CommonResult.success(fullCalendarDtolist,"查询信息成功");
 
     }
 

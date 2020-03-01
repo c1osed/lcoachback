@@ -64,4 +64,24 @@ public class StudentServiceImpl implements StudentService {
         studentMapper.deleteByPrimaryKey(id);
 
     }
+
+    @Override
+    public List<Student> getStudentByteacherId(Integer teacherid) {
+        //根据老师id查询所有的学生
+        List<Student> studentByteacherId = studentMapper.getStudentByteacherId(teacherid);
+        if(studentByteacherId!=null&&studentByteacherId.size()>0){
+            return  studentByteacherId;
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Student> getStudentByteacherIdandCourseTypeId(Integer teacherid, String course_type) {
+        List<Student> studentByteacherIdandCourseTypeId = studentMapper.getStudentByteacherIdandCourseTypeId(teacherid, course_type);
+         if(studentByteacherIdandCourseTypeId!=null&&studentByteacherIdandCourseTypeId.size()>0){
+             return  studentByteacherIdandCourseTypeId;
+         }
+        return null;
+    }
 }

@@ -90,4 +90,25 @@ public class StudentController {
     }
 
 
+    @CrossOrigin
+    @ResponseBody
+    @ApiOperation(value = "根据老师id查询学生的信息")
+    @RequestMapping(value = "/api/student/{id}", method = RequestMethod.GET)
+    public CommonResult selectStudentByTeacherId(@PathVariable("id") Integer id) {
+        List<Student> studentByteacherId = studentService.getStudentByteacherId(id);
+        return CommonResult.success(studentByteacherId,"查询信息成功");
+
+    }
+
+    @CrossOrigin
+    @ResponseBody
+    @ApiOperation(value = "根据老师id查询不同类型学生的信息")
+    @RequestMapping(value = "/api/student", method = RequestMethod.GET)
+    public CommonResult selectStudentByTeacherIdAndCourseType(Integer id,String coursetype) {
+        List<Student> studentByteacherId = studentService.getStudentByteacherIdandCourseTypeId(id,coursetype);
+        return CommonResult.success(studentByteacherId,"查询信息成功");
+
+    }
+
+
 }

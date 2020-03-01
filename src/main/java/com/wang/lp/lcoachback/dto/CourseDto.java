@@ -2,7 +2,7 @@ package com.wang.lp.lcoachback.dto;
 
 public class CourseDto {
     int id;
-    String course_title;
+    String coursetitle;
     String color;
     String starttime;
     String endtime;
@@ -12,8 +12,12 @@ public class CourseDto {
         this.id = id;
     }
 
-    public void setCourse_title(String course_title) {
-        this.course_title = course_title;
+    public void setCoursetitle(String coursetitle) {
+        this.coursetitle = coursetitle;
+    }
+
+    public String getCoursetitle() {
+        return coursetitle;
     }
 
     public void setColor(String color) {
@@ -36,9 +40,7 @@ public class CourseDto {
         return id;
     }
 
-    public String getCourse_title() {
-        return course_title;
-    }
+
 
     public String getColor() {
         return color;
