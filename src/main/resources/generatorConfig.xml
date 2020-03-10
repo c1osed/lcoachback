@@ -54,9 +54,19 @@
 <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
 <!--        </table>-->
         <!--            课程表-->
-        <table tableName="course">
+<!--        <table tableName="course">-->
+<!--        <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--    </table>-->
+        <table tableName="texam">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
+        <table tableName="sexam">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="homework">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+
 <!--        第四天结束-->
 
     </context>

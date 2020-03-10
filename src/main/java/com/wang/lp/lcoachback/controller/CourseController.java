@@ -64,7 +64,7 @@ public class CourseController {
     @ApiOperation(value = "通过老师的id查询被选择的课程")
     @RequestMapping(value = "/api/coursebyteacherid/{id}", method = RequestMethod.GET)
     public CommonResult SelectChooseCourseByTeacherId(@PathVariable("id") Integer id) {
-        List<Course> getcoursebyteacherid = courseService.getcoursebyteacherid(id);
+        List<Course> getcoursebyteacherid = courseService.getchoosecoursebyteacherid(id);
         List fullCalendarDtolist = new ArrayList();
         for( Course  course : getcoursebyteacherid){
             FullCalendarDto fullCalendarDto = new FullCalendarDto();
