@@ -1,9 +1,7 @@
 package com.wang.lp.lcoachback.service;
 
-import com.wang.lp.lcoachback.mbg.model.Sexam;
 import com.wang.lp.lcoachback.mbg.model.Texam;
 
-import javax.validation.constraints.Max;
 import java.util.List;
 
 public interface TExamService {
@@ -23,6 +21,14 @@ public interface TExamService {
     List<Texam> getAllTexam();
 
     Texam selectTexamById(Integer id);
+
+    /**
+     * 根据老师的id去查询出所有的被添加的题目
+     * @param id
+     * @return
+     */
+
+    List<Texam>  getAllTexamByTid(Integer id);
 
 
 }

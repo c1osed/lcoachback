@@ -7,7 +7,7 @@ public interface SExamService {
     String upload();
 
     /**
-     * 添加我的题目
+     * 布置作业
      * @param sexam
      */
      void addSexam(Sexam sexam);

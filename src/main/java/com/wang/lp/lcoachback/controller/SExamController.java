@@ -1,7 +1,6 @@
 package com.wang.lp.lcoachback.controller;
 
 import com.wang.lp.lcoachback.common.api.CommonResult;
-import com.wang.lp.lcoachback.mbg.model.Sexam;
 import com.wang.lp.lcoachback.service.SExamService;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -56,12 +55,12 @@ public class SExamController {
     }
 
 
-    @ResponseBody
-    @CrossOrigin
-    @ApiOperation(value = "上传一个题目")
-    @RequestMapping(value = "/api/sexam", method = RequestMethod.POST)
-    public CommonResult registerStudent(Sexam sexam) {
-        sExamService.addSexam(sexam);
-        return CommonResult.success("添加题目成功");
-    }
+//    @ResponseBody
+//    @CrossOrigin
+//    @ApiOperation(value = "上传一个题目")
+//    @RequestMapping(value = "/api/sexam", method = RequestMethod.POST)
+//    public CommonResult registerStudent(Sexam sexam) {
+//        sExamService.addSexam(sexam);
+//        return CommonResult.success("添加题目成功");
+//    }
 }

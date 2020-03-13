@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.lp.lcoachback.mbg.mapper.HomeworkMapper">
+  <resultMap id="BaseResultMapWithSidAndState" type="com.wang.lp.lcoachback.mbg.model.Homework">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="seid" jdbcType="INTEGER" property="seid" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="homeworktitle" jdbcType="VARCHAR" property="homeworktitle" />
+    <result column="starttime" jdbcType="VARCHAR" property="starttime" />
+    <result column="endtime" jdbcType="VARCHAR" property="endtime" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="depict" jdbcType="VARCHAR" property="depict" />
+    <association property="student"  column="sid" select="com.wang.lp.lcoachback.mbg.mapper.StudentMapper.selectByPrimaryKey" javaType="com.wang.lp.lcoachback.mbg.model.Student">
+    </association>
+    <association property="teacher"  column="tid" select="com.wang.lp.lcoachback.mbg.mapper.TeacherMapper.selectByPrimaryKey" javaType="com.wang.lp.lcoachback.mbg.model.Teacher">
+    </association>
+
+    <collection property="sexamList" ofType="com.wang.lp.lcoachback.mbg.model.Sexam" javaType="java.util.ArrayList"  column="id" select="com.wang.lp.lcoachback.mbg.mapper.SexamMapper.selectByPrimaryKey"/>
+  </resultMap>
+
+  <select  id="getHomeWorkBySidAndState" resultMap="BaseResultMapWithSidAndState">
+SELECT * FROM homework h
+JOIN teacher t ON h.tid = t.id  AND h.sid = #{sid} AND h.state=#{state}
+</select>
+</mapper>

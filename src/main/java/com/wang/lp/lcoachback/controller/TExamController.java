@@ -1,7 +1,6 @@
 package com.wang.lp.lcoachback.controller;
 
 import com.wang.lp.lcoachback.common.api.CommonResult;
-import com.wang.lp.lcoachback.mbg.model.Sexam;
 import com.wang.lp.lcoachback.mbg.model.Texam;
 import com.wang.lp.lcoachback.service.TExamService;
 import io.swagger.annotations.ApiOperation;
@@ -58,6 +57,16 @@ public class TExamController {
         Texam texam = tExamService.selectTexamById(id);
         texam.setIschoose("0");
         tExamService.update(texam);
+        return CommonResult.success("题目移除成功");
+    }
+
+
+    @CrossOrigin
+    @ResponseBody
+    @ApiOperation(value = "根据老师id去查询被选择的题目")
+    @RequestMapping(value = "/api/texams/{id}", method = RequestMethod.GET)
+    public CommonResult getAllTexamByTid(@PathVariable("id") Integer id) {
+    //未被使用
         return CommonResult.success("题目移除成功");
     }
 }

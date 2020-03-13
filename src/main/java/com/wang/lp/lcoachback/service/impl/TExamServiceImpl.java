@@ -2,6 +2,7 @@ package com.wang.lp.lcoachback.service.impl;
 
 import com.wang.lp.lcoachback.mbg.mapper.TexamMapper;
 import com.wang.lp.lcoachback.mbg.model.Texam;
+import com.wang.lp.lcoachback.mbg.model.TexamExample;
 import com.wang.lp.lcoachback.service.TExamService;
 import com.wang.lp.lcoachback.service.TeacherService;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,17 @@ public class TExamServiceImpl implements TExamService {
         Texam texam = texamMapper.selectByPrimaryKey(id);
         if(texam!=null){
             return  texam;
+        }
+        return null;
+    }
+
+    @Override
+    public List<Texam> getAllTexamByTid(Integer id) {
+        TexamExample texamExample = new TexamExample();
+        texamExample.createCriteria().andIschooseEqualTo("1");
+        List<Texam> texams = texamMapper.selectByExample(texamExample);
+        if(texams!=null&&texams.size()>0){
+            return  texams;
         }
         return null;
     }
