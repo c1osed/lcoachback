@@ -27,4 +27,28 @@ public class HomeWorkServiceImpl implements HomeWorkService {
         }
         return null;
     }
+
+    @Override
+    public List<Homework> getHomeWorkByTidandState(Integer tid, String state) {
+        List<Homework> homeWorkBySidAndState = homeworkMapper.getHomeWorkByTidAndState(tid, state);
+        if(homeWorkBySidAndState!=null&&homeWorkBySidAndState.size()>0){
+            return homeWorkBySidAndState;
+        }
+        return null;
+    }
+
+    @Override
+    public Homework getHomeWork(Integer id) {
+        Homework homework = homeworkMapper.selectByPrimaryKey(id);
+        if(homework!=null){
+            return homework;
+        }
+        return null;
+    }
+
+    @Override
+    public void updateHomeWork(Homework homework) {
+        homeworkMapper.updateByPrimaryKeySelective(homework);
+
+    }
 }

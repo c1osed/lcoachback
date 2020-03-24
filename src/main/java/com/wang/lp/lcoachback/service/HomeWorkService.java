@@ -19,4 +19,26 @@ public interface HomeWorkService {
      */
 
     List<Homework> getHomeWorkBySidandState(Integer sid, String state);
+
+    /**
+     * 根据老师id和状态查询出所有的作业
+     * @param tid
+     * @param state
+     * @return
+     */
+
+    List<Homework>  getHomeWorkByTidandState(Integer tid,String state);
+
+    /**
+     * 根据id查找作业
+     * @param id
+     * @return
+     */
+    Homework getHomeWork(Integer id);
+
+    /**
+     * 根据id更新作业
+     * @param homework
+     */
+    void updateHomeWork(Homework homework);
 }

@@ -23,4 +23,11 @@
 SELECT * FROM homework h
 JOIN teacher t ON h.tid = t.id  AND h.sid = #{sid} AND h.state=#{state}
 </select>
+
+
+  <select  id="getHomeWorkByTidAndState" resultMap="BaseResultMapWithSidAndState">
+SELECT * FROM homework h
+JOIN student s ON h.sid = s.id  AND h.tid = #{tid} AND h.state=#{state}
+</select>
+
 </mapper>

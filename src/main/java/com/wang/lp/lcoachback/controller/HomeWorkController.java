@@ -62,4 +62,46 @@ public class HomeWorkController {
 
     }
 
+
+    @ResponseBody
+    @CrossOrigin
+    @ApiOperation(value = "根据作业id改变作业的状态")
+    @RequestMapping(value = "/api/homework/{id}", method = RequestMethod.PUT)
+    public CommonResult updateHomeWorkByStudentId(@PathVariable("id") Integer id) {
+        //satte=0 未提交
+        //state=1 已提交
+        //state=2 已批改
+        Homework homeWork = homeWorkService.getHomeWork(id);
+        homeWork.setState("1");
+        homeWorkService.updateHomeWork(homeWork);
+        return CommonResult.success("更新作业状态成功");
+
+    }
+
+    @ResponseBody
+    @CrossOrigin
+    @ApiOperation(value = "根据作业id改变作业的状态")
+    @RequestMapping(value = "/api/homework", method = RequestMethod.PUT)
+    public CommonResult updateHomeWorkByIdAndRate(Integer id,Integer seid) {
+        //satte=0 未提交
+        //state=1 已提交
+        //state=2 已批改
+        Homework homeWork = homeWorkService.getHomeWork(id);
+        homeWork.setState("2");
+        homeWork.setSeid(seid);
+        homeWorkService.updateHomeWork(homeWork);
+        return CommonResult.success("批改更新作业状态成功");
+
+    }
+
+    @ResponseBody
+    @CrossOrigin
+    @ApiOperation(value = "根据老师id查询作业信息并且查询作业信息")
+    @RequestMapping(value = "/api/thomework", method = RequestMethod.GET)
+    public CommonResult getHomeWorkByTId(Integer tid,String state) {
+        List<Homework> homeWorkBySidandState = homeWorkService.getHomeWorkByTidandState(tid,state);
+        return CommonResult.success(homeWorkBySidandState,"查询成功");
+
+    }
+
 }

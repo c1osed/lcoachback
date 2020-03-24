@@ -11,4 +11,18 @@ public interface SExamService {
      * @param sexam
      */
      void addSexam(Sexam sexam);
+
+    /**
+     * 根据id查询作业
+     * @param id
+     * @return
+     */
+
+     Sexam getSexam(Integer id);
+
+    /**
+     * 修改作业
+     * @param sexam
+     */
+     void updateSexam(Sexam sexam);
 }

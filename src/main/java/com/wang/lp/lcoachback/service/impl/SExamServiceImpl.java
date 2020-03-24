@@ -22,4 +22,19 @@ SexamMapper sexamMapper;
         sexamMapper.insert(sexam);
 
     }
+
+    @Override
+    public Sexam getSexam(Integer id) {
+        Sexam sexam = sexamMapper.selectByPrimaryKey(id);
+        if(sexam!=null){
+            return  sexam;
+        }
+        return null;
+    }
+
+    @Override
+    public void updateSexam(Sexam sexam) {
+        sexamMapper.updateByPrimaryKeySelective(sexam);
+
+    }
 }
