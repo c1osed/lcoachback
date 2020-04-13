@@ -42,9 +42,9 @@ public class HomeWorkController {
             sexam.setSanswer("");
             sexam.setTanswer(texam.getTanswer());
             sexam.setSid(homework.getSid());
-            sexam.setTid(texam.getTid());
+            sexam.setTid(homework.getTid());
             sexam.setResolve(texam.getResolve());
-            sexam.setHwid(texam.getId());
+            sexam.setHwid(homework.getId());
             sExamService.addSexam(sexam);
         }
 
